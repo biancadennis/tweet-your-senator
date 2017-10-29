@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div.parent-container
+    div.main-container
+      h2 What's Your Zipcode
+      form(action='/', method='post')
+        div.input-group.input-group-lg
+          label(for='zipcode')
+          input(name='zipcode', autofocus)
+        div.submitButton
+          input(type='submit', value='Find My Congressman')

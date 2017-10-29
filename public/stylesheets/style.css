@@ -1,0 +1,38 @@
+.top-nav {	
+  height: 70px;	
+  width: 100%;	
+  background-color: #0A527E;
+  margin: 0px;
+  color: white;
+  text-align: center;
+}
+.parent-container {
+  display: flex;
+ justify-content: center;
+}
+.main-container {
+  display: flex;
+  justify-content: center;	
+  margin-top: 100px;
+  text-align: center;
+  height: 270px;	
+  width: 464px;	
+  border-radius: 4px;	
+  background-color: #FFFFFF;	
+  box-shadow: 0 0 6px 0 rgba(178,178,178,0.5);
+}
+.submitButton {
+	height: 22px;
+	width: 164px;
+	color: #FFFFFF;
+	font-family: "Open Sans";
+	font-size: 16px;
+	line-height: 22px;
+  background-color: #DC4337;
+  height: 45px;
+	width: 219px;
+  
+}
+a {
+  color: white;
+}
