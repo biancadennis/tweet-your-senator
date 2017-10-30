@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    div.parent-container
+        div.main-container
+            h1 Select Your Tweet #{handle}
+            form(action=`/tweet-your-congressman-${handle}`, method='post')
+                input(type='radio', name='tweet', value=option1)
+                lable(for='senator') #{option1}
+                input(type='radio', name='tweet', value=option2)
+                lable(for='senator') #{option2}
+                    div.submitButton
+                        input(type='submit', value='Tweet away')
+
