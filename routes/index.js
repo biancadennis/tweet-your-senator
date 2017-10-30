@@ -16,9 +16,13 @@ router.get('/choose-congressman-:zip', function(req, res, next) {
   zipcode = req.params.zip
   axios.get('https://www.googleapis.com/civicinfo/v2/representatives?address=08401&includeOffices=true&roles=legislatorUpperBody&key=AIzaSyDXcOtMfGs87Bwu3gliJD4IUpzWMO-bcVw')
     .then(function(response){
-      console.log(response.data.officials)
-      official_data = respons.data.officials
+      user_state    = response.data.normalizedInput.state
+      official_data = response.data.officials
+      res.render('senator-list', {
+        user_state:     user_state,
+        official_data:  official_data
+      });
     })
-  res.render('senator-list');
 });
+
 module.exports = router;

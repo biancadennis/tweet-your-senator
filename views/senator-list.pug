@@ -1,7 +1,9 @@
 extends layout
 
 block content
-    zipcode
     div.parent-container
         div.main-container
-            h2 What's Your Zipcode
+            h2 Which #{user_state} Senator would you like to Tweet?
+            ul
+                each official in official_data
+                    li=official.name
