@@ -4,6 +4,7 @@ block content
     div.parent-container
         div.main-container
             h2 Which #{user_state} Senator would you like to Tweet?
-            ul
+            form(action='/choose-congressman-:zip', method='post')
                 each official in official_data
-                    li=official.name
+                    lable(for='senator') #{official.name}
+                    input(type='radio', name='senator', value=official.name)
