@@ -4,14 +4,16 @@ var axios = require('axios')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { zipcode: 'Express' });
+  res.render('index');
 });
 
+//gets zipcode from input
 router.post('/', function(request, response){
   zip = request.body.zipcode
   response.redirect(`/choose-congressman-${zip}`)
 })
 
+//queries api using zipcode provided by user and stores info needed in array that is passed to the template for choosing a senator to tweet
 router.get('/choose-congressman-:zip', function(req, res, next) {
   zipcode = req.params.zip
   axios.get(`https://www.googleapis.com/civicinfo/v2/representatives?address=${zipcode}&includeOffices=true&roles=legislatorUpperBody&key=AIzaSyDXcOtMfGs87Bwu3gliJD4IUpzWMO-bcVw`)
@@ -21,8 +23,8 @@ router.get('/choose-congressman-:zip', function(req, res, next) {
       channel0        = response.data.officials[0].channels
       channel1        = response.data.officials[1].channels
       name0           = officials_data[0].name
-      name1           =officials_data[1].name
-      twitter_handles= [];
+      name1           = officials_data[1].name
+      twitter_handles = [];
       
       channel0.forEach(function(channel) {
         if (channel.type === "Twitter")
@@ -40,14 +42,18 @@ router.get('/choose-congressman-:zip', function(req, res, next) {
       });
     })
 });
+
+//gets twitter handle from senator selected in input
 router.post('/choose-congressman-:zip', function(request, response){
   handle = request.body.senator
   response.redirect(`/tweet-your-congressman-${handle}`)
 })
+
+//gets handle from input and includes handle in tweet options. These are passed to 
 router.get('/tweet-your-congressman-:handle', function(request, response){
   handle  = request.params.handle
-  option1 = `Hey ${'@' + handle} trends for #GivingTuesday show people are gearing up in August, start early!`
-  option2 = `The best ideas are not in the room, ${'@' + handle}. Find great fundraising supporter stories for`
+  option1 = `Hey ${'@' + handle} trends for #GivingTuesday show people are gearing up in August, start early! https://wholewale.com via @wholewhale`
+  option2 = `The best ideas are not in the room, ${'@' + handle}. Find great fundraising supporter stories for #GivingTuesday https://wholewale.com via @wholewhale`
   response.render('tweet-options', {
     handle:   handle,
     option1:  option1,
@@ -55,6 +61,7 @@ router.get('/tweet-your-congressman-:handle', function(request, response){
    });
 })
 
+//allows user to choose tweet they prefer and send tweet to twitter using web intent
 router.post('/tweet-your-congressman-:handle', function(request, response){
   tweet_content = request.body.tweet
   console.log(tweet_content)

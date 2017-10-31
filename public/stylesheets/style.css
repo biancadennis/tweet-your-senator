@@ -16,13 +16,17 @@
   justify-content: center;	
   margin-top: 100px;
   text-align: center;
-  height: 270px;	
-  width: 464px;	
+  height: 370px;	
+  width: 564px;	
   border-radius: 4px;	
   background-color: #FFFFFF;	
   box-shadow: 0 0 6px 0 rgba(178,178,178,0.5);
 }
 .submitButton {
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+  justify-content: center;	
 	height: 22px;
 	width: 164px;
 	color: #FFFFFF;
@@ -45,4 +49,40 @@ button, input[type="submit"], input[type="reset"] {
     font: inherit;
     cursor: pointer;
     outline: inherit !important;
+}
+
+.inside-form {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;	
+}
+
+a:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+a:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+label {
+  padding-left: 10px;
+}
+.align-left {
+  display: flex;
+  text-align: left;
+  height: 50px;	
+  padding: 10px;
+  color: #7B7676;	
+  font-family: "Open Sans";	
+  font-size: 16px;	
+  font-weight: 600;	
+  line-height: 22px;
+}
+button, input[type="radio"] {
+ margin-right: 10px;
 }

@@ -6,13 +6,10 @@ block content
             h2 Which #{user_state} Senator would you like to Tweet?
             form(action=`/choose-congressman-${zip}`, method='post')
                 each senator in senator_info
-                    input(type='radio', name='senator', value=senator.twitter)
-                    lable(for='senator') #{senator.name}
+                    div
+                        input(type='radio', name='senator', value=senator.twitter)
+                        lable(for='senator') #{senator.name} @#{senator.twitter}
                 div.submitButton
                     input(type='submit', value='Tweet Congressman')
-                //- if (senator == senator_names[0]) 
-                //-     #{var senator_handle = twitter_handles[0]}
-                //- else
-                //-     #{var senator_handle = twitter_handles[1]}
                 
                     
